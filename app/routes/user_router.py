@@ -205,7 +205,7 @@ def user_recipe_edit_page(recipe_id):
 
             # Redirect new Recipe List
             return redirect("/user/recipe")
-        except:
+        except Exception as e:
             errors.append(FormError("image", "Image file is not valid", ''))
             errors_dict = fillErrorDictionary(errors, errors_dict)
             return render_template("user/recipe_edit.html", recipe=recipe, errors=errors_dict, categories=categories)

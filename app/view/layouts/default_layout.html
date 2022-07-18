@@ -50,10 +50,7 @@
 
   <body>
     <!-- ======= Top Bar ======= -->
-    <section
-      id="topbar"
-      class="d-flex align-items-center fixed-top "
-    >
+    <section id="topbar" class="d-flex align-items-center fixed-top">
       <div
         class="container-fluid container-xl d-flex align-items-center justify-content-center justify-content-lg-start"
       >
@@ -67,10 +64,7 @@
     </section>
 
     <!-- ======= Header ======= -->
-    <header
-      id="header"
-      class="fixed-top d-flex align-items-center"
-    >
+    <header id="header" class="fixed-top d-flex align-items-center">
       <div
         class="container-fluid container-xl d-flex align-items-center justify-content-between"
       >
@@ -88,38 +82,47 @@
             <li><a class="nav-link scrollto" href="/contact">Contact</a></li>
 
             {% if session["user_id"] %}
-              <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="/user/profile">Profile</a></li>
-                  <li><a href="/user/recipe">My Recipes</a></li>
-                </ul>
-              </li>
+            <li class="dropdown">
+              <a href="#"
+                ><span>Profile</span> <i class="bi bi-chevron-down"></i
+              ></a>
+              <ul>
+                <li><a href="/user/profile">Profile</a></li>
+                <li><a href="/user/recipe">My Recipes</a></li>
+                <li>
+                  <form action="/logout" method="GET" id="logout_form">
+                    <a
+                      href="javascript:document.getElementById('logout_form').submit();"
+                      >Logout</a
+                    >
+                  </form>
+                </li>
+              </ul>
+            </li>
             {% else %}
-              <li><a class="nav-link scrollto" href="/login">Login</a></li>
+            <li><a class="nav-link scrollto" href="/login">Login</a></li>
             {% endif %}
-            
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
         <!-- .navbar -->
         {% if not session["user_id"] %}
-          <a href="/register" class="book-a-table-btn scrollto">Register</a>
+        <a href="/register" class="book-a-table-btn scrollto">Register</a>
         {% endif %}
       </div>
     </header>
     <!-- End Header -->
 
     {% if get_flashed_messages() %}
-      <header>
-          <div class="alert alert-primary mb-0 text-center" role="alert">
-              {{ get_flashed_messages() | join(" ") }}
-          </div>
-      </header>
+    <header>
+      <div class="alert alert-primary mb-0 text-center" role="alert">
+        {{ get_flashed_messages() | join(" ") }}
+      </div>
+    </header>
     {% endif %}
 
     <main id="main">{% block main %}{% endblock %}</main>
 
-    
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->

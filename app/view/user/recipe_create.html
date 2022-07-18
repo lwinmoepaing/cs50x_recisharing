@@ -70,59 +70,19 @@ Page {% endblock %} {% block main %}
             />
           </div>
       
-          {% if old_request.steps %}
-            <div id="old_request_steps" class="d-none invisible hidden">
-              {{ old_request.steps }}
-            </div>
-          {% endif %}
-      
-          <!-- Steps Container: Start -->
-          <ul class="list-group mb-2 mt-4" id="steps_list_container"></ul>
-          <!-- Steps Container: Finished -->
-      
-          <div class="mb-2">
-            <label for="steps_input" class="form-label">Steps</label>
-      
-            <div class="input-group mb-3">
-              <input type="hidden" name="steps" id="steps_value_container" class="d-none">
-              <input
-                autocomplete="off"
-                class="form-control {% if errors.steps %} is-invalid {% endif %}"
-                id="steps_input"
-                name="steps_list"
-                placeholder="Steps"
-                type="text"
-              />  
-           
-              <button
-                class="btn btn-outline-secondary"
-                type="button"
-                id="steps_add_button"
-              >
-                Add
-              </button>
-      
-              {% if errors.steps %}
-                <div class="invalid-feedback">
-                    {{errors.steps}}
-                </div>
-              {% endif %}
-             
-            </div>
-          </div>
-      
           {% if old_request.ingredients %}
             <div id="old_request_ingredients" class="d-none invisible hidden">
               {{ old_request.ingredients }}
             </div>
           {% endif %}
-      
+          
+          <label for="ingredients_input" class="form-label">Ingredients</label>
+          
           <!-- Ingredients Container: Start -->
-          <ul class="list-group mb-2 mt-4" id="ingredients_list_container"></ul>
+          <ul class="list-group my-2" id="ingredients_list_container"></ul>
           <!-- Ingredients Container: Finished -->
       
           <div class="mb-2">
-            <label for="ingredients_input" class="form-label">Ingredients</label>
       
             <div class="input-group mb-3">
               <input type="hidden" name="ingredients" id="ingredients_value_container" class="d-none">
@@ -148,7 +108,49 @@ Page {% endblock %} {% block main %}
               {% endif %}
             </div>   
           </div>
+
+          {% if old_request.steps %}
+          <div id="old_request_steps" class="d-none invisible hidden">
+            {{ old_request.steps }}
+          </div>
+          {% endif %}
+    
+        
+          <label for="steps_input" class="form-label">Steps</label>
+          
+          <!-- Steps Container: Start -->
+          <ul class="list-group my-2" id="steps_list_container"></ul>
+          <!-- Steps Container: Finished -->
       
+          <div class="mb-2">
+            <div class="input-group mb-3">
+              <input type="hidden" name="steps" id="steps_value_container" class="d-none">
+              <input
+                autocomplete="off"
+                class="form-control {% if errors.steps %} is-invalid {% endif %}"
+                id="steps_input"
+                name="steps_list"
+                placeholder="Steps"
+                type="text"
+              />  
+          
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="steps_add_button"
+              >
+                Add
+              </button>
+      
+              {% if errors.steps %}
+                <div class="invalid-feedback">
+                    {{errors.steps}}
+                </div>
+              {% endif %}
+            
+            </div>
+          </div>
+
           <div class="mb-3">
             <label for="image" class="form-label {% if errors.image %} is-invalid {% endif %}">Recipe Image</label>
             <input class="form-control" name="image" type="file" id="image">

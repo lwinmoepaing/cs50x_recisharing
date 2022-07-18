@@ -49,11 +49,11 @@
         <h5> Instructions Steps </h5>
 
         <div class="steps_list" id="steps_list">
-          <ul>
+          <ol>
             {% for step in recipe.steps %}
               <li> {{ step.value }} </li>
             {% endfor %}
-          </ul>
+          </ol>
         </div>
 
         {% if recipe.youtube_link %}
