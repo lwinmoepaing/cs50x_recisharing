@@ -1,0 +1,76 @@
+{% extends "layouts/default_layout.html" %} {% block title %} Register {%
+endblock %} {% block main %}
+
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Registration</h2>
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Register</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 mt-4 mt-lg-0">
+      <div class="box py-4 px-4">
+        <h5 class="text-center mb-3">Registration</h5>
+        <form action="/register" method="post" class="text-center">
+          <div class="mb-3">
+            <input
+              autocomplete="off"
+              autofocus
+              class="form-control mx-auto {% if errors.username %} is-invalid {% endif %}"
+              id="username"
+              name="username"
+              placeholder="Username"
+              type="text"
+              value="{% if errors.old_username %}errors.old_username{% endif %}"
+            />
+            {% if errors.username %}
+            <div class="invalid-feedback">{{errors.username}}</div>
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            <input
+              class="form-control mx-auto {% if errors.password %} is-invalid {% endif %}"
+              id="password"
+              name="password"
+              placeholder="Password"
+              type="password"
+              value="{% if errors.old_password %}errors.old_password{% endif %}"
+            />
+            {% if errors.password %}
+            <div class="invalid-feedback">{{errors.password}}</div>
+            {% endif %}
+          </div>
+
+          <div class="mb-3">
+            <input
+              class="form-control mx-auto {% if errors.confirm_password %} is-invalid {% endif %}"
+              id="confirmation"
+              name="confirmation"
+              placeholder="Password Confirmation"
+              type="password"
+            />
+            {% if errors.confirm_password %}
+            <div class="invalid-feedback">{{errors.confirm_password}}</div>
+            {% endif %}
+          </div>
+          <div class="d-grid gap-2">
+              <button class="btn btn-warning" type="submit">Register</button>
+          </div>
+        </form>
+        <div class="text-center mt-3 s">
+            <a href="/login"><small>Already Account!</small></a>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,160 @@
+{% extends "layouts/default_layout.html" %} {% block title %} Pulblic Index Page
+{% endblock %} {% block main %}
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>My Profile</h2>
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Profile</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="container py-3">
+  <div class="my-cover">
+    <img
+      src="{{ user.background_image }}"
+      class="bg"
+      alt="Profile Picture"
+      id="profile_bg_image"
+    />
+
+    <div>
+      <label for="profile_pic_input">
+        <img
+          src="{{ user.image_avatar }}"
+          class="img-thumbnail my-avatar my-avatar-position"
+          alt="Profile Picture"
+          id="profile_pic"
+        />
+      </label>
+
+      <input
+        type="file"
+        name="profile_pic_input"
+        class="d-none"
+        id="profile_pic_input"
+      />
+    </div>
+  </div>
+
+  <!-- <div
+    class="spinner-border d-none text-primary"
+    role="status"
+    id="profile_pic_loading"
+  >
+    <span class="visually-hidden">Loading...</span>
+  </div> -->
+
+  <div class="row justify-content-center mt-4">
+    <div class="mt-4 mt-lg-0 mb-4">
+      <div class="box py-4 px-4">
+        <form action="/user/profile" method="post">
+          <input
+            type="hidden"
+            name="background_image"
+            class="d-none"
+            value="{{ user.background_image }}"
+            id="profile_bg_image_input"
+          />
+
+          <div class="mb-1">
+            <label for="username" class="form-label">Name</label>
+            <input
+              autocomplete="off"
+              class="form-control"
+              id="username"
+              name="username"
+              placeholder="Username"
+              type="text"
+              value="{{ user.name }}"
+            />
+          </div>
+          <div class="mb-1">
+            <label for="status" class="form-label">Status</label>
+            <input
+              autocomplete="off"
+              class="form-control"
+              id="status"
+              name="status"
+              placeholder="Status"
+              type="text"
+              value="{{ user.status or '' }}"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="intro_text" class="form-label">Introduction</label>
+            <input
+              autocomplete="off"
+              class="form-control"
+              id="intro_text"
+              name="intro_text"
+              placeholder="Introduction"
+              type="text"
+              value="{{ user.intro_text or '' }}"
+            />
+          </div>
+          <button class="btn btn-primary" type="submit">Update Profile</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="background_img_modal"
+    tabindex="-1"
+    aria-labelledby="background_img_modalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="background_img_modalLabel">
+            Modal title
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            {% for bgImg in default_bg_images %}
+            <div
+              class="col-4 mb-3 background_image_clicker"
+              data-value="{{ bgImg }}"
+            >
+              <img src="{{ bgImg }}" class="img-fluid" />
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary disabled"
+            disabled
+            id="profile_bg_img_change_btn"
+          >
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

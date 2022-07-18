@@ -1,0 +1,97 @@
+{% extends "layouts/default_layout.html" %} {% block title %} Pulblic User
+Recipe List {% endblock %} {% block main %}
+
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>My Recipes</h2>
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>My Recipes</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <div class="d-flex flex-row">
+    <div class="flex-grow-1">
+      <a class="btn btn-sm btn-primary" href="/user/recipe/create"
+        >Create Recipe</a
+      >
+    </div>
+    <div class="">
+      <form method="GET" class="d-flex">
+        <input
+          autocomplete="off"
+          class="form-control form-control-sm mx-auto w-auto text-end"
+          type="number"
+          name="page"
+          min="1"
+          value="{{page}}"
+        />
+        <button class="btn btn-sm btn-primary mx-2" type="submit">Go</button>
+      </form>
+      <div class="text-end mx-2">Total page : {{total_page}}</div>
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Title</th>
+        <th scope="col" class="text-end">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for recipe in recipes %}
+      <tr>
+        <th scope="row">{{ loop.index }}</th>
+        <td>
+          <img
+            src="{{ recipe.image }}"
+            class="img-thumbnail my-avatar"
+            alt="Profile Picture"
+            id="profile_pic"
+          />
+        </td>
+        <td>{{ recipe.title }}</td>
+        <td class="text-end">
+          <div class="d-flex justify-content-end">
+            <a
+              href="/user/recipe/{{ recipe.id }}"
+              role="button"
+              class="btn btn-sm mx-1 btn-primary"
+              >View</a
+            >
+            <a
+              href="/user/recipe/{{ recipe.id }}/edit"
+              role="button"
+              class="btn btn-sm mx-1 btn-success"
+              >Edit</a
+            >
+            <form
+              method="POST"
+              action="/user/recipe/{{recipe.id}}/delete"
+              class="d-flex"
+            >
+              <button
+                href="#"
+                role="button"
+                class="btn btn-sm mx-1 btn-danger"
+                type="submit"
+              >
+                Delete
+              </button>
+            </form>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+{% endblock %}

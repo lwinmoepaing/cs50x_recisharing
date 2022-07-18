@@ -1,0 +1,20 @@
+# Todo Tree [VsCode Extension]
+# List By Lwin Moe Paing @ 2022 July
+
+# [x] : Researching Other Recipe App
+
+# [x] : Make Recipe Database
+example https://www.bettycrocker.com/recipes/grilled-salmon-with-honey-soy-marinade/001ba701-3077-4d70-815b-942bc0f047f3
+
+# [x] : Make Authentication 
+
+# [x] : Make Profile CRUD
+
+# [x] : Make Process Data Between Auth And Make Recipe
+- [x] Create Recipe
+- [x] Retrieving Recipe
+- [x] Update Recipe
+- [x] Delete Recipe
+
+
+# [x] : Make Seeder For 20 data seeding

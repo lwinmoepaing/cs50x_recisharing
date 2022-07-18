@@ -1,0 +1,170 @@
+{% extends "layouts/default_layout.html" %}
+
+{% block title %}
+    User Recipe Edit
+{% endblock %}
+
+{% block main %}
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2> {% if recipe == None %} My Recipes {% else %} {{recipe.title}} {% endif %}</h2>
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/user/recipe">My Recipes</a></li>
+        <li>Edit</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+    {% if recipe == None %}
+    <h3>Recipe Edit Page !!</h3>
+
+    {% else %}
+    <section class="container py-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 mt-4 mt-lg-0">
+          <div class="box py-4 px-4">
+            <form action="/user/recipe/{{ recipe.id }}/edit" method="post" class="recipe_form" enctype="multipart/form-data">
+              <div class="mb-2">
+                <label for="title" class="form-label">Recipe Title</label>
+                <input
+                  autocomplete="off"
+                  class="form-control  {% if errors.title %} is-invalid {% endif %}"
+                  id="title"
+                  name="title"
+                  placeholder="Recipe Title"
+                  type="text"
+                  value="{% if recipe.title %}{{recipe.title}}{% endif %}"
+                />
+                {% if errors.title %}
+                  <div class="invalid-feedback">
+                      {{errors.title}}
+                  </div>
+                {% endif %}
+              </div>
+          
+              <div class="mb-2">
+                <label for="category" class="form-label">Recipe Category</label>
+                <select
+                  class="form-control  form-select"
+                  aria-label="Default select example"
+                  name="category"
+                >
+                  {% for category in categories %}
+                    <option 
+                      value="{{ category.id }}"
+                      {% if (category.id | string) == (recipe.category_id | string) %}
+                        selected="selected"
+                      {% endif %}    
+                    >
+                      {{ category.title }}
+                    </option>
+                  {% endfor %}
+                </select>
+              </div>
+          
+              <div class="mb-2">
+                <label for="title" class="form-label">Youtube Link</label>
+                <input
+                  autocomplete="off"
+                  class="form-control "
+                  id="youtube_link"
+                  name="youtube_link"
+                  placeholder="Youtube link"
+                  type="text"
+                  value="{% if recipe.youtube_link %}{{recipe.youtube_link}}{% endif %}"
+                />
+              </div>
+          
+              {% if recipe.ingredients %}
+                <div id="old_request_ingredients" class="d-none invisible hidden">
+                  {{ recipe.ingredients }}
+                </div>
+              {% endif %}
+
+              <label for="ingredients_input" class="form-label">Ingredients</label>
+          
+              <!-- Ingredients Container: Start -->
+              <ul class="list-group my-2" id="ingredients_list_container"></ul>
+              <!-- Ingredients Container: Finished -->
+
+              <div class="mb-2">
+          
+                <div class="input-group mb-3">
+                  <input type="hidden" name="ingredients" id="ingredients_value_container" class="d-none">
+                  <input
+                    autocomplete="off"
+                    class="form-control {% if errors.ingredients %} is-invalid {% endif %}"
+                    id="ingredients_input"
+                    name="ingredients_list"
+                    placeholder="Ingredients"
+                    type="text"
+                  />
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="ingredients_add_button"
+                  >
+                    Add
+                  </button>
+                  {% if errors.ingredients %}
+                    <div class="invalid-feedback">
+                        {{errors.ingredients}}
+                    </div>
+                  {% endif %}
+                </div>   
+              </div>
+
+              {% if recipe.steps %}
+              <div id="old_request_steps" class="d-none invisible hidden">
+                {{ recipe.steps }}
+              </div>
+              {% endif %}
+              
+              <label for="steps_input" class="form-label">Instruction Steps</label>
+
+              <!-- Steps Container: Start -->
+              <ul class="list-group my-2" id="steps_list_container"></ul>
+              <!-- Steps Container: Finished -->
+          
+              <div class="mb-2">
+          
+                <div class="input-group mb-3">
+                  <input type="hidden" name="steps" id="steps_value_container" class="d-none">
+                  <input
+                    autocomplete="off"
+                    class="form-control {% if errors.steps %} is-invalid {% endif %}"
+                    id="steps_input"
+                    name="steps_list"
+                    placeholder="Steps"
+                    type="text"
+                  />  
+              
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="steps_add_button"
+                  >
+                    Add
+                  </button>
+          
+                  {% if errors.steps %}
+                    <div class="invalid-feedback">
+                        {{errors.steps}}
+                    </div>
+                  {% endif %}
+                
+                </div>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Update Recipe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+{% endblock %}
