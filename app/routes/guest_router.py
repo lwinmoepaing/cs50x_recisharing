@@ -10,7 +10,16 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+
+    recipe_query = "SELECT recipes.id, recipes.image, recipes.title, "
+    recipe_query += " users.id as user_id, users.image_avatar as user_image_avatar, users.name as user_name "
+    recipe_query += " FROM recipes "
+    recipe_query += " INNER JOIN users on users.id = recipes.user_id "
+    recipe_query += " ORDER BY recipes.id DESC LIMIT 3 OFFSET 0"
+
+    recipes = db.execute(recipe_query)
+
+    return render_template("index.html", recipes=recipes)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -23,7 +32,7 @@ def login_page():
     errors_dict = {
         "old_username": "",
         "username": "",
-        
+
         "old_password": "",
         "password": ""
     }
@@ -36,11 +45,13 @@ def login_page():
 
         # Ensure username was submitted
         if not username:
-            errors.append(FormError("username", "User name is required", username))
+            errors.append(
+                FormError("username", "User name is required", username))
 
         # Ensure password was submitted
         if not password:
-            errors.append(FormError("password", "Password is required", password))
+            errors.append(
+                FormError("password", "Password is required", password))
 
         if len(errors) > 0:
             errors_dict = fillErrorDictionary(errors, errors_dict)
@@ -61,7 +72,7 @@ def login_page():
         session["user_id"] = rows[0]["id"]
 
         # Redirect user to home page
-        return redirect("/user")
+        return redirect("/recipes")
 
     # User reached route via GET (as by clicking a link or via redirect)
     else:
@@ -78,10 +89,10 @@ def register():
     errors_dict = {
         "old_username": "",
         "username": "",
-        
+
         "old_password": "",
         "password": "",
-        
+
         "old_confirm_password": "",
         "confirm_password": ""
     }
@@ -95,19 +106,23 @@ def register():
 
         # Ensure username was submitted
         if not username:
-            errors.append(FormError("username", "must provide username", username))
+            errors.append(
+                FormError("username", "must provide username", username))
 
         # Ensure password was submitted
         if not password:
-            errors.append(FormError("password", "must provide password", password))
+            errors.append(
+                FormError("password", "must provide password", password))
 
         # Ensure password was submitted
         if not confirm_password:
-            errors.append(FormError("confirm_password", "must provide confirm password", confirm_password))
+            errors.append(FormError("confirm_password",
+                          "must provide confirm password", confirm_password))
 
         # So far alright, we need to check password is same again
         if not password == confirm_password:
-            errors.append(FormError("confirm_password", "not the same confirm password and password", ""))
+            errors.append(FormError("confirm_password",
+                          "not the same confirm password and password", ""))
 
         # Errors Validation Re Redirect
         if len(errors) > 0:
@@ -129,7 +144,8 @@ def register():
             # Redirect with new user session , to user page
             return redirect("/user")
         except:
-            errors.append(FormError("confirm_password", "User already created", ""))
+            errors.append(FormError("confirm_password",
+                          "User already created", ""))
             errors_dict = fillErrorDictionary(errors, errors_dict)
             return render_template("register.html", errors=errors_dict)
 
@@ -137,6 +153,7 @@ def register():
     else:
 
         return render_template("register.html", errors=errors)
+
 
 @app.route("/logout")
 def logout():

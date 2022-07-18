@@ -1072,11 +1072,12 @@ section {
 }
 .chefs .member .member-info {
   position: absolute;
-  bottom: -80px;
-  left: 20px;
-  right: 20px;
+  bottom: -50px;
+  left: 30px;
+  right: 30px;
   background: #fff;
-  padding: 20px 0;
+  border-radius: 30px;
+  padding: 12px 0;
   color: #433f39;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -1084,7 +1085,7 @@ section {
 }
 .chefs .member h4 {
   font-weight: 500;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   font-size: 16px;
   color: #6c665c;
   position: relative;

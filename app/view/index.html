@@ -34,11 +34,13 @@ endblock %} {% block main %}
               <div class="col-lg-8 details order-2 order-lg-1">
                 <h3>Moke Khin Khar</h3>
                 <p class="fst-italic">
-                  When it comes to comfort food, mohingar is top of the list. It brings back fond
-                  memories of early morning visits to the street corner which started with
-                  breakfast at a mohingar stall nearby. This noodle soup is considered the
-                  Burmese national dish and is eaten for breakfast, lunch and dinner. Not
-                  surprisingly every family has their own variation and this is the favorite recipe.
+                  When it comes to comfort food, mohingar is top of the list. It
+                  brings back fond memories of early morning visits to the
+                  street corner which started with breakfast at a mohingar stall
+                  nearby. This noodle soup is considered the Burmese national
+                  dish and is eaten for breakfast, lunch and dinner. Not
+                  surprisingly every family has their own variation and this is
+                  the favorite recipe.
                 </p>
               </div>
               <div class="col-lg-4 text-center order-1 order-lg-2">
@@ -136,41 +138,33 @@ endblock %} {% block main %}
     </div>
 
     <div class="row">
-      <div class="col-lg-4 col-md-6">
-        <div class="member">
-          <div class="pic">
-            <img src="/img/chefs/chefs-1.jpg" class="img-fluid" alt="" />
+      {% for recipe in recipes %}
+      <div class="col-lg-4 col-md-6 mb-3">
+        <a href="/recipes/{{ recipe.id }}">
+          <div class="member">
+            <div class="pic">
+              <img src="{{ recipe.image }}" class="recipe-img" alt="" />
+            </div>
+            <div class="member-info">
+              <h4>{{ recipe.title }}</h4>
+              <div class="recipe-avatar-container">
+                <img
+                  src="{{ recipe.user_image_avatar }}"
+                  class="recipe-avatar"
+                  alt="Profile Picture"
+                  id="profile_pic"
+                />
+                <span class="ms-3"> By {{ recipe.user_name }}</span>
+              </div>
+            </div>
           </div>
-          <div class="member-info">
-            <h4>Walter White</h4>
-            <span>Master Chef</span>
-          </div>
-        </div>
+        </a>
       </div>
+      {% endfor %}
+    </div>
 
-      <div class="col-lg-4 col-md-6">
-        <div class="member">
-          <div class="pic">
-            <img src="/img/chefs/chefs-2.jpg" class="img-fluid" alt="" />
-          </div>
-          <div class="member-info">
-            <h4>Sarah Jhonson</h4>
-            <span>Patissier</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <div class="member">
-          <div class="pic">
-            <img src="/img/chefs/chefs-3.jpg" class="img-fluid" alt="" />
-          </div>
-          <div class="member-info">
-            <h4>William Anderson</h4>
-            <span>Cook</span>
-          </div>
-        </div>
-      </div>
+    <div class="text-center mt-1">
+      <a href="/recipes">View More Recipes</a>
     </div>
   </div>
 </section>

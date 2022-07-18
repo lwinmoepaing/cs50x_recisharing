@@ -1,9 +1,44 @@
-{% extends "layouts/default_layout.html" %}
+{% extends "layouts/default_layout.html" %} {% block title %} Recipe List {%
+endblock %} {% block main %}
+<section class="breadcrumbs">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2>Recipes</h2>
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li>Recipes</li>
+      </ol>
+    </div>
+  </div>
+</section>
 
-{% block title %}
-    Pulblic Index Page
-{% endblock %}
-
-{% block main %}
-   <h3>Hello World</h3>
+<section id="latest_recipes" class="chefs">
+  <div class="container">
+    <div class="row justify-content-center">
+      {% for recipe in recipes %}
+      <div class="col-lg-4 col-md-6 mb-3">
+        <a href="/recipes/{{ recipe.id }}">
+          <div class="member">
+            <div class="pic">
+              <img src="{{ recipe.image }}" class="recipe-img" alt="" />
+            </div>
+            <div class="member-info">
+              <h4>{{ recipe.title }}</h4>
+              <div class="recipe-avatar-container">
+                <img
+                  src="{{ recipe.user_image_avatar }}"
+                  class="recipe-avatar"
+                  alt="Profile Picture"
+                  id="profile_pic"
+                />
+                <span class="ms-3"> By {{ recipe.user_name }}</span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 {% endblock %}

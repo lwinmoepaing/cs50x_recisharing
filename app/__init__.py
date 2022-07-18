@@ -25,5 +25,4 @@ Session(app)
 db = SQL("sqlite:///database.db")
 
 # All the routes
-from app.routes import guest_router
-from app.routes import user_router
+from app.routes import guest_router, recipe_router, user_router

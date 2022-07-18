@@ -47,51 +47,63 @@ Recipe List {% endblock %} {% block main %}
     </thead>
     <tbody>
       {% for recipe in recipes %}
-      <tr>
-        <th scope="row">{{ loop.index }}</th>
-        <td>
-          <img
-            src="{{ recipe.image }}"
-            class="img-thumbnail my-avatar"
-            alt="Profile Picture"
-            id="profile_pic"
-          />
-        </td>
-        <td>{{ recipe.title }}</td>
-        <td class="text-end">
-          <div class="d-flex justify-content-end">
-            <a
-              href="/user/recipe/{{ recipe.id }}"
-              role="button"
-              class="btn btn-sm mx-1 btn-primary"
-              >View</a
-            >
-            <a
-              href="/user/recipe/{{ recipe.id }}/edit"
-              role="button"
-              class="btn btn-sm mx-1 btn-success"
-              >Edit</a
-            >
-            <form
-              method="POST"
-              action="/user/recipe/{{recipe.id}}/delete"
-              class="d-flex"
-            >
-              <button
-                href="#"
+        <tr>
+          <th scope="row">{{ loop.index }}</th>
+          <td>
+            <img
+              src="{{ recipe.image }}"
+              class="img-thumbnail my-avatar"
+              alt="Profile Picture"
+              id="profile_pic"
+            />
+          </td>
+          <td>{{ recipe.title }}</td>
+          <td class="text-end">
+            <div class="d-flex justify-content-end">
+              <a
+                href="/user/recipe/{{ recipe.id }}"
                 role="button"
-                class="btn btn-sm mx-1 btn-danger"
-                type="submit"
+                class="btn btn-sm mx-1 btn-primary"
+                >View</a
               >
-                Delete
-              </button>
-            </form>
-          </div>
-        </td>
-      </tr>
+              <a
+                href="/user/recipe/{{ recipe.id }}/edit"
+                role="button"
+                class="btn btn-sm mx-1 btn-success"
+                >Edit</a
+              >
+              <form
+                method="POST"
+                action="/user/recipe/{{recipe.id}}/delete"
+                class="d-flex"
+              >
+                <button
+                  href="#"
+                  role="button"
+                  class="btn btn-sm mx-1 btn-danger"
+                  type="submit"
+                >
+                  Delete
+                </button>
+              </form>
+            </div>
+          </td>
+        </tr>
       {% endfor %}
     </tbody>
   </table>
+
+  {% if (recipes | length) == 0 %}
+  <div class="row justify-content-center">
+    <div class="col-lg-4 mt-4 mt-lg-0">
+      <div class="py-4 px-4 text-center">
+        <img src="/img/empty_recipe.png" style="width: auto; height: 100px" />
+        <br />
+        Empty Recipe
+      </div>
+    </div>
+  </div>
+  {% endif %}
 </section>
 
 {% endblock %}
