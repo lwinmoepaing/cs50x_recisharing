@@ -10,7 +10,7 @@
 - The main idea of the project is recipe-sharing platform where user can share their own recipes and for Food enthusiasts who's looking for favorite recipe. They can find easily and share their own.
 
 #### Database Structure :
-All information about users, recipes data are stored in ```database.db``` .There are 3 tables, Users for Authenticate, Recipes For User's Recipe Data, And Category is relation with Recipes Table.
+All information about users, recipes data are stored in ```database.db``` .There are 3 tables, Users for Authentication, Recipes For User's Recipe Data, And Category is relation with Recipes Table.
 
 - First, table 'users' Where I put, id (primary key), name (unique for not repeated account), password (hasing), image_avatar (profile_picture), background_image (for their page background wallpaper), status (for version2 not for current), intro_text (for v2), role_id (integer 1 is for 'admin', 2 is 'normal_user' , but v1 is only allowed 2 for 'normal_user'), create_at(timestamp) 
 
