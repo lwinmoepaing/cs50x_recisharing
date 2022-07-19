@@ -10,6 +10,10 @@
 -
 -
 
+Demo Screencast:
+
+![DemoScreen gif](./demo.gif)
+
 ### All requirement installtaions for project
 It's inside ```requirements.txt``` 
 
