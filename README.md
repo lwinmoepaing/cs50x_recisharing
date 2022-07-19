@@ -27,7 +27,7 @@ Login User
 - Login User can search Recipe by Category , Title or Both.
 
 Guest User
-- Guest User can search Recipe by Category , Title or Both.\
+- Guest User can search Recipe by Category , Title or Both.
 - Guest User can also visit Recipe Owner Profile.
 
 #### Demo Screencast :
@@ -36,6 +36,35 @@ Guest User
 
 
 #### Tricky Part for Me!!
+
+```ingredints``` and ```steps``` are stored as string but json type and I need to really encode and decode for especially Update Recepie and Create Recipe Senaroies
+
+At Line: 291 inside ```js/my.js``` And At Line: 
+Steps (Instruction) are also similar to ingredient  
+
+```js
+var ingredientOldRequest = document.getElementById("old_request_ingredients");
+if (ingredientOldRequest) {
+    try {
+        var oldRequestSteps = ingredientOldRequest.innerHTML;
+        ingredientList = JSON.parse(oldRequestSteps);
+        ingredientList.forEach(function (data) {
+            addMakeIngredientList(data.value, data.id);
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+function addMakeIngredientList(value, oldId) {
+    //... Other Codes 
+    li.append(value);
+    li.append(span);
+    ingredientsListContainer.append(li);
+  } // Ingredients Added Process: Finished
+```
+
+```addMakeIngredientList``` Function make List Component inside Container. 
 
 
 #### All requirement installtaions for project
