@@ -1,7 +1,7 @@
 # ReciSharing
 
 ## CS50
->This is my final project for the CS50x2022 Introduction to Computer Sciense course.
+>This is my final project for the CS50x2022 Introduction to Computer Sciense.
 >Computer Science, Python, Flask Web Framework, HTML, CSS, JAVASCRIPT, CS50
 
 #### Video Demo: 
@@ -34,7 +34,9 @@ It's inside ```requirements.txt```
 
 ### Modules Which I used in this project
 > Flask
+
 > Flask-Session
+
 > CS50
 
 ### Folder Structure
