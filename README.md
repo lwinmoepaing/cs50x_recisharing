@@ -94,6 +94,9 @@ It's inside ```requirements.txt```
 │   ├── routes
 │   │   └──     # All Routes python files
 │   │
+│   ├── views
+│   │   └──     # All Html Layout Template files
+│   │
 │   └── __init__.py # Config All Flask App
 │ 
 │    
@@ -110,6 +113,11 @@ It's inside ```requirements.txt```
 ├── requirements.txt # All modules dependencies
 └── README.md
 ```
+
+#### Credit Bootstrap Template (Free)
+* Template Name: Delicious - v4.7.1
+* Template URL: https://bootstrapmade.com/delicious-free-restaurant-bootstrap-theme/
+* Author: BootstrapMade.com
 
 ## About CS50
 CS50 is a openware course from Havard University and taught by David J. Malan
