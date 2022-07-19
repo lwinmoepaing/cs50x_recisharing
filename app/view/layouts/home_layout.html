@@ -141,16 +141,18 @@
                     <span>Reci</span> Sharing
                   </h2>
                   <p class="animate__animated animate__fadeInUp">
-                    CS50 2022 Final Project by LwinMoePaing, <br />
+                    CS50x2022 Final Project by Lwin Moe Paing, <br />
                     A recipe has no soul. You, as the cook, must bring soul to
                     the recipe.
                   </p>
                   <div>
+                    {% if not session["user_id"] %}
                     <a
-                      href="#menu"
+                      href="/register"
                       class="btn-menu book-a-table-btn animate__animated animate__fadeInUp scrollto"
                       >Register & Share Yours</a
                     >
+                    {% endif %}
                   </div>
                 </div>
               </div>
@@ -167,16 +169,18 @@
                     <span>Reci</span> Sharing
                   </h2>
                   <p class="animate__animated animate__fadeInUp">
-                    CS50 2022 Final Project by LwinMoePaing, <br />
+                    CS50x2022 Final Project by Lwin Moe Paing, <br />
                     A recipe has no soul. You, as the cook, must bring soul to
                     the recipe.
                   </p>
                   <div>
+                    {% if not session["user_id"] %}
                     <a
-                      href="#menu"
+                      href="/register"
                       class="btn-menu book-a-table-btn animate__animated animate__fadeInUp scrollto"
                       >Register & Share Yours</a
                     >
+                    {% endif %}
                   </div>
                 </div>
               </div>
