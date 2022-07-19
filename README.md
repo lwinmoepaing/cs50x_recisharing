@@ -39,7 +39,7 @@ Guest User
 
 ```ingredints``` and ```steps``` are stored as string but json type and I need to really encode and decode for especially Update Recepie and Create Recipe Senaroies
 
-At Line: 291 inside ```js/my.js``` And At Line: 
+At Line: 291 inside ```js/my.js``` And 
 Steps (Instruction) are also similar to ingredient  
 
 ```js
@@ -67,10 +67,10 @@ function addMakeIngredientList(value, oldId) {
 ```addMakeIngredientList``` Function make List Component inside Container. 
 
 
-#### All requirement installtaions for project
+### All requirement installtaions for project :
 It's inside ```requirements.txt``` 
 
-#### How to Install All Modules
+### How to Install All Modules :
 ``` pip install -r requirements.txt ```
 
 ### Modules Which I used in this project
