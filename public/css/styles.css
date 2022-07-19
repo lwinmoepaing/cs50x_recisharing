@@ -83,3 +83,7 @@ td, th {
     align-items: center;
 }
 
+.profile_name {
+    padding-top: 2px;
+    padding-left: 80px;
+}

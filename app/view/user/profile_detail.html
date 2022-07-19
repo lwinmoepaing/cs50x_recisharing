@@ -1,22 +1,43 @@
-{% extends "layouts/default_layout.html" %} {% block title %} Recipe List {%
-endblock %} {% block main %}
+{% extends "layouts/default_layout.html" %} {% block title %} Pulblic Index Page
+{% endblock %} {% block main %}
 <section class="breadcrumbs">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center">
-      <h2>Recipes</h2>
+      <h2>{% if user %} {{user.name}} {% else %} Not Found User {% endif %}</h2>
       <ol>
         <li><a href="/">Home</a></li>
-        <li>Recipes</li>
+        <li>User</li>
       </ol>
     </div>
   </div>
 </section>
 
-<section id="latest_recipes" class="chefs">
+{% if not user %} Not Found User {% else %}
+<section class="container py-3">
+  <div class="my-cover">
+    <img src="{{ user.background_image }}" class="bg" alt="Profile Picture" />
+
+    <div>
+      <label for="profile_pic_input">
+        <img
+          src="{{ user.image_avatar }}"
+          class="img-thumbnail my-avatar my-avatar-position"
+          alt="Profile Picture"
+          id="profile_pic"
+        />
+      </label>
+    </div>
+  </div>
+  <div>
+    <p class="profile_name">{{ user.name }}</p>
+  </div>
+</section>
+
+<section id="latest_recipes" class="pt-0 chefs">
   <div class="container">
-    
+
     <div class="section-title">
-      <h2>Latest <span>Recipes</span></h2>
+        <h2>Latest <span>Recipes</span></h2>
     </div>
 
     <div class="row justify-content-center">
@@ -46,4 +67,5 @@ endblock %} {% block main %}
     </div>
   </div>
 </section>
-{% endblock %}
+
+{% endif %} {% endblock %}

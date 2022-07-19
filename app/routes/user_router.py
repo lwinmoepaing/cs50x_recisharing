@@ -15,6 +15,23 @@ def user_index_page():
     return render_template("user/index.html")
 
 
+@app.route("/user/profile/<profile_id>", methods=["GET", "POST"])
+def user_profile_detail_page(profile_id):
+    user_query = "SELECT id, name, image_avatar, background_image, status, intro_text, role_id FROM users WHERE id = ?"
+    user_exe = db.execute(user_query, profile_id)
+    user = user_exe[0] if len(user_exe) > 0 else None
+
+    recipe_query = "SELECT recipes.id, recipes.image, recipes.title, "
+    recipe_query += " users.id as user_id, users.image_avatar as user_image_avatar, users.name as user_name "
+    recipe_query += " FROM recipes "
+    recipe_query += " INNER JOIN users on users.id = recipes.user_id "
+    recipe_query += " WHERE users.id = ? "
+    recipe_query += " ORDER BY recipes.id DESC LIMIT 5 OFFSET 0"
+    recipes = db.execute(recipe_query, user["id"] if user else "0")
+
+    return render_template("user/profile_detail.html", user=user, recipes=recipes)
+
+
 @app.route("/user/profile", methods=["GET", "POST"])
 @auth_required
 def user_profile_page():
@@ -227,10 +244,10 @@ def user_recipe_detail_page(recipe_id):
     recipe_query += " WHERE recipes.user_id = ? and recipes.id = ?"
     recipe_exec = db.execute(recipe_query, user_id, recipe_id)
     recipe = recipe_exec[0] if len(recipe_exec) > 0 else None
-    
+
     if not recipe is None:
-        recipe["ingredients"] = json.loads(recipe["ingredients"]) 
-        recipe["steps"] = json.loads(recipe["steps"]) 
+        recipe["ingredients"] = json.loads(recipe["ingredients"])
+        recipe["steps"] = json.loads(recipe["steps"])
 
     return render_template("user/recipe_detail.html", recipe=recipe)
 

@@ -27,11 +27,13 @@
               alt="Recipe Image"
             />
 
-            <img
-              src="{{ recipe.user_image_avatar }}"
-              class="img-thumbnail my-avatar my-avatar-position"
-              alt="Profile Picture"
-            />
+            <a href="/user/profile/{{ recipe.user_id }}">
+              <img
+                src="{{ recipe.user_image_avatar }}"
+                class="img-thumbnail my-avatar my-avatar-position"
+                alt="Profile Picture"
+              />
+            </a>
         </div>
 
         <h4 class="text-center yellow-line"> {{ recipe.title }} </h4>

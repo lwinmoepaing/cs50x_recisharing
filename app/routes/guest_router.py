@@ -164,3 +164,13 @@ def logout():
 
     # Redirect user to login form
     return redirect("/")
+
+@app.route("/about")
+def about():
+    # Redirect user to login form
+    return render_template("/about.html")
+
+@app.route("/contact")
+def contact():
+    # Redirect user to login form
+    return render_template("/contact.html")
