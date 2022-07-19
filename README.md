@@ -22,9 +22,20 @@ There are 3 tables, Users for Authenticate, Recipes For User's Recipe Data, And 
 
 #### Features
 
+Guest User
+- Guest User can search Recipe by Category , Title or Both.
+
+Login User
+- Login User can CRUD for their recipes.
+- Login User can CRUD for their profile.
+- Guest User can search Recipe by Category , Title or Both.
+
+#### Demo Screencast
+
 ![DemoScreen gif](./demo.gif)
 
-Demo Screencast --||--
+#### Tricky Part for Me!!
+
 
 ### All requirement installtaions for project
 It's inside ```requirements.txt``` 
