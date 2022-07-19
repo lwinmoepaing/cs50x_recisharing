@@ -4,15 +4,13 @@
 >This is my final project for the CS50x2022 Introduction to Computer Sciense.
 >Computer Science, Python, Flask Web Framework, HTML, CSS, JAVASCRIPT, CS50
 
-#### Video Demo: 
+#### Video Demo : 
 
-#### Idea:
+#### Idea :
 - The main idea of the project is recipe-sharing platform where user can share their own recipes and for Food enthusiasts who's looking for favorite recipe. They can find easily and share their own.
 
-#### Database Structure
-All information about users, recipes data are stored in database.db
-
-There are 3 tables, Users for Authenticate, Recipes For User's Recipe Data, And Category is relation with Recipes Table.
+#### Database Structure :
+All information about users, recipes data are stored in ```database.db``` .There are 3 tables, Users for Authenticate, Recipes For User's Recipe Data, And Category is relation with Recipes Table.
 
 - First, table 'users' Where I put, id (primary key), name (unique for not repeated account), password (hasing), image_avatar (profile_picture), background_image (for their page background wallpaper), status (for version2 not for current), intro_text (for v2), role_id (integer 1 is for 'admin', 2 is 'normal_user' , but v1 is only allowed 2 for 'normal_user'), create_at(timestamp) 
 
@@ -20,27 +18,30 @@ There are 3 tables, Users for Authenticate, Recipes For User's Recipe Data, And 
 
 - Third Table is for recipes data. This table is , called 'recipes', id (primary key), title, ingredients, steps (for instruction list), image (for recipe image), youtube_link (for embeded link), category_id (Foreign key for id of 'categories' table), user_id (Foreign key for id of 'users' table),
 
-#### Features
-
-Guest User
-- Guest User can search Recipe by Category , Title or Both.
+#### Features :
 
 Login User
 - Login User can CRUD for their recipes.
 - Login User can CRUD for their profile.
-- Guest User can search Recipe by Category , Title or Both.
+- Login User can visit Recipe Owner Profile.
+- Login User can search Recipe by Category , Title or Both.
 
-#### Demo Screencast
+Guest User
+- Guest User can search Recipe by Category , Title or Both.\
+- Guest User can also visit Recipe Owner Profile.
+
+#### Demo Screencast :
 
 ![DemoScreen gif](./demo.gif)
+
 
 #### Tricky Part for Me!!
 
 
-### All requirement installtaions for project
+#### All requirement installtaions for project
 It's inside ```requirements.txt``` 
 
-### How to Install All Modules
+#### How to Install All Modules
 ``` pip install -r requirements.txt ```
 
 ### Modules Which I used in this project
