@@ -85,6 +85,8 @@ def user_profile_page():
         db.execute(updated_user_query, username, background_image,
                    status or '', intro_text or '', user_id)
 
+        flash("Successfully Update!")
+
         return redirect("/user/profile")
     # For GET Methods
     else:

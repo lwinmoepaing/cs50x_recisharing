@@ -13,6 +13,15 @@ Recipe List {% endblock %} {% block main %}
   </div>
 </section>
 
+{% if get_flashed_messages() %}
+<header>
+  <div class="alert alert-success mb-0 text-center" role="alert">
+    {{ get_flashed_messages() | join(" ") }}
+  </div>
+</header>
+{% endif %}
+
+
 <section class="container">
   <div class="d-flex flex-row">
     <div class="flex-grow-1">

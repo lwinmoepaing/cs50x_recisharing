@@ -12,11 +12,62 @@ endblock %} {% block main %}
   </div>
 </section>
 
-<section id="latest_recipes" class="chefs">
+<section id="latest_recipes" class="chefs pt-4">
   <div class="container">
-    
+    <form method="GET">
+      <div class="row justify-content-center">
+        <div class="col-md-4 mb-3">
+          <div>
+            <input
+              autocomplete="off"
+              class="form-control form-control-sm"
+              id="search_query"
+              name="search_query"
+              placeholder="Recipe Title"
+              type="text"
+              value="{{ search_query }}"
+            />
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div>
+            <select
+              class="form-control form-select form-select-sm"
+              aria-label="Default select example"
+              name="category"
+            >
+              <option value="">Select Category</option>
+              {% for cat in categories %}
+              <option value="{{ cat.id }}" 
+                {% if (cat.id | string) == (category| string) %}
+                  selected="selected"
+                {% endif %}
+              >{{ cat.title }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="d-flex">
+            <input
+              autocomplete="off"
+              class="form-control form-control-sm text-end"
+              type="number"
+              name="page"
+              min="1"
+              value="{{ page }}"
+            />
+            <button class="btn btn-sm btn-primary mx-2" type="submit">
+              Go
+            </button>
+          </div>
+          <div class="text-end mx-2">Total page : {{ total_page }}</div>
+        </div>
+      </div>
+    </form>
+
     <div class="section-title">
-      <h2>Latest <span>Recipes</span></h2>
+      <h2 class="mt-0">Latest <span>Recipes</span></h2>
     </div>
 
     <div class="row justify-content-center">
