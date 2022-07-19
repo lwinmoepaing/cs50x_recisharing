@@ -1,8 +1,7 @@
 # ReciSharing
 
-## CS50x
->This was my final project for conclude the CS50x Introduction to Computer Sciense course.
-
+## CS50
+>This is my final project for conclude the CS50x2022 Introduction to Computer Sciense course.
 
 #### Video Demo: 
 
@@ -11,11 +10,10 @@
 -
 -
 
-
-## All requirement installtaions for project
+### All requirement installtaions for project
 It's inside ```requirements.txt``` 
 
-## How to Install All Modules
+### How to Install All Modules
 ``` pip install -r requirements.txt ```
 
-## Folder Structure
+### Folder Structure

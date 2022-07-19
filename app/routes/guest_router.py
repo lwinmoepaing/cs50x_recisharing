@@ -142,7 +142,7 @@ def register():
             flash("Registered!")
 
             # Redirect with new user session , to user page
-            return redirect("/user")
+            return redirect("/user/recipe")
         except:
             errors.append(FormError("confirm_password",
                           "User already created", ""))
